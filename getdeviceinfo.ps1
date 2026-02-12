@@ -149,9 +149,9 @@ while ($true) {
     }
 
     Write-Host "`n[!] TAMPER PROTECTION IS ON [!]" -ForegroundColor Red
-    Write-Host "[P] Proceed(Safeway)"
+    Write-Host "[P] Proceed secondary script(deprecated)"
     Write-Host "[R] Retry: I manually disabled Tamper Protection"
-    Write-Host "[E] Bypass anways (Not Recommended)" -ForegroundColor Yellow
+    Write-Host "[E] Pass anways (Recommended)" -ForegroundColor Yellow
     
     $Choice = Read-Host "Choose P or R or E"
     if ($Choice -eq 'P' -or $Choice -eq 'p') {
@@ -180,7 +180,7 @@ while ($true) {
         # Loop continues
     }
     elseif ($Choice -eq 'E' -or $Choice -eq 'e') {
-        Write-Host "Bypassing..."
+        Write-Host "Passing..."
         break
     }
 }
