@@ -2,6 +2,7 @@
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "ERROR: Please run this script as Administrator!" -ForegroundColor Red
+    pause
     exit
 }
 
@@ -172,6 +173,7 @@ while ($true) {
         }
         catch {
             Write-Host "[!] Preperation Failed" -ForegroundColor Red
+            pause
             exit
         }
     }
@@ -220,4 +222,5 @@ else {
     }
 }
 Write-Host "FALTAL ERROR" -ForegroundColor Magenta
+pause
 exit
